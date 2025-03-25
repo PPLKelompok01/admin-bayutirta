@@ -1,0 +1,39 @@
+.editLayanan {
+  padding-top: 24px;
+  /* background-color: aqua; */
+}
+
+.divider {
+    height: 1px;
+    background: #d8dcdf;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.info-container {
+    padding: 24px 32px;
+    flex-direction: column;
+    gap: 40px;
+    align-self: stretch;
+    margin-right: 32px;
+    margin-bottom: 40px;
+
+    border-radius: 8px;
+    background: #FFF;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-self: stretch;
+}
+
+.req{
+    color: red;
+}
+
