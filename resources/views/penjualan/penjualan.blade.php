@@ -40,3 +40,36 @@
             </div>
             @endforeach
     </div>
+    <!--<div class="pagination">-->
+    <!--    <nav aria-label="...">-->
+    <!--        <ul class="pagination">-->
+    <!--            <li class="page-item disabled">-->
+    <!--                <a class="page-link">Previous</a>-->
+    <!--            </li>-->
+    <!--            <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+    <!--            <li class="page-item" aria-current="page">-->
+    <!--                <a class="page-link" href="#">2</a>-->
+    <!--            </li>-->
+    <!--            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+    <!--            <li class="page-item">-->
+    <!--                <a class="page-link" href="#">Next</a>-->
+    <!--            </li>-->
+    <!--        </ul>-->
+    <!--    </nav>     -->
+    <!--</div>-->
+    @else
+    <div class="katalog">
+            <div class="picture">
+                <img src="/img/ALT 4.png" alt="noservice">
+            </div>
+            <div class="message text-center">
+                <h3 class="fw-bold">Belum ada penjualan yang dibuat</h3>
+                <p>Buat dan atur penjualan yang bisa diakses pelangganmu!</p>
+                <p>Klik button “Tambah penjualan” di atas kanan halaman ini</p>
+            </div>           
+        @endif
+    </div>
+</div>
+
+
+@endsection
