@@ -16,6 +16,7 @@ class artikelController extends Controller
             'artikel'=>$artikels
         ]);
     }
+
     public function editArtikel() {
         return view ('artikel.editArtikel');
     }
@@ -35,6 +36,7 @@ class artikelController extends Controller
         // return view('welcome',['inspections' => $back]);
         return response()->json($posts); // Return the data as JSON
     }
+
     public function addArtikel(Request $request)
     {
         $validatedData = $request->validate([
@@ -73,7 +75,6 @@ class artikelController extends Controller
         ]);
         }
 
-
         // Create a new Post instance with the validated data
          // Save the new post to the database
         $post->save();
@@ -104,7 +105,6 @@ class artikelController extends Controller
             ]);
         }
 
-
         // Create a new Post instance with the validated data
         Artikel::where('id_artikel', '=', $id)->update([
             'judul' => $validatedData['judul'],
@@ -112,8 +112,7 @@ class artikelController extends Controller
             'title_penulis' => $validatedData['title_penulis'],
             'isi' => $validatedData['isi']
         ]);
-
-        return redirect('artikel'); // Return the new post as JSON
+        return redirect('artikel');
     }
 
     public function deleteArtikel(string $id)

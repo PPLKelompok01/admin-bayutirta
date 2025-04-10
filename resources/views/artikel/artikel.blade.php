@@ -1,6 +1,13 @@
+@extends('main')
+@section('content')
+
 <div class="artikel">
     <div class="titleWarp">
         <div class="artikelTitle">Artikel</div>
+            <a href="/artikel/add" class="btn btn-primary btn-1" role="button">
+                <ion-icon name="add-circle" class="icon-1"></ion-icon>
+                Tambah Artikel
+            </a>
     </div>
 
     @if (isset($artikel)AND $artikel->count()>0)
@@ -14,7 +21,9 @@
                     <h4>{{$item->judul}}</h4>
                     <p class="card-teks">{{$item->isi}}</p>
                     <div class="d-flex justify-content-between align-items-center pt-3">
-                    <small class="text-body-secondary">{{$item->created_at->format('d-m-Y')}}</small>
+                        <div class="btn-group">
+                        </div>
+                        <small class="text-body-secondary">{{$item->created_at->format('d-m-Y')}}</small>
                     </div>
                 </div>
             </div>
