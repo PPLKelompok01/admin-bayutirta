@@ -8,7 +8,6 @@
             <form class="info" action="/artikel/editArtikel/{{$detail->id_artikel}}" method="POST" enctype="multipart/form-data">
         </form>
         @else
-
             <form class="info" action="addArtikel" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <h4>Detail Informasi Artikel</h4>

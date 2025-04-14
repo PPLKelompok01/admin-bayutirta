@@ -11,7 +11,7 @@ use App\Models\Artikel;
 class artikelController extends Controller
 {
     public function artikel() {
-        $artikels = Artikel::all();
+        $artikels = Artikel::paginate(3);
         return view ('artikel.artikel',[
             'artikel'=>$artikels
         ]);
