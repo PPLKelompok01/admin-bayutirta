@@ -23,34 +23,9 @@
     </style>
 </head>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tombol WhatsApp</title>
-    <style>
-    /* Styling untuk tombol WhatsApp */
-    .wa-button {
-        display: inline-block;
-        background-color: #25d366;
-        /* Warna default WhatsApp */
-        color: white;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
-    </style>
-</head>
-
 <body>
 
-    <!-- Tombol WhatsApp -->
+    <!-- Icon WhatsApp -->
     <a href="javascript:void(0);" class="wa-button" id="waButton">Hubungi Kami via WhatsApp</a>
 
     <script>
@@ -74,8 +49,5 @@
     </script>
 
 </body>
-
-</html>
-
 
 </html>
