@@ -6,7 +6,7 @@
       <div class="col-s-9">
       <div class="content">
         <div class="content-title">
-        <h2>Hallo Admin {{ auth()->user()->name }}</h2>
+        <h2>Hallo Admin {{ auth()->user()->name }}!</h2>
         </div>
         <div class="content-task">
         <div class="row">
