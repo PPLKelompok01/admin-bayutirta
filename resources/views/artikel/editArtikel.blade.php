@@ -64,7 +64,7 @@
             </div>
             <div class="buttonGroup">
                 <a href="/artikel" class="btn btn btn-outline-danger" role="button">
-                    Batal
+                    Cancel
                 </a>
                 <button type="submit" class="btn btn-outline-success">
                     Simpan</button>
