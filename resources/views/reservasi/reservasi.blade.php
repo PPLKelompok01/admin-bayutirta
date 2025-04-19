@@ -216,10 +216,6 @@
                     </div> --}}
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                                            <button type="button" class="btn btn-primary">Simpan</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
