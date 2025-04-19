@@ -147,19 +147,93 @@
                                                     <h5>Status Permohonan</h5>
                                                     <p>{{$item->status}}</p>
                                                 </div>
-                                                {{-- <div class="row">
+                                                <!-- {{-- <div class="row">
                         <h5>Keterangan Penolakan</h5>
                         <p>Kasian ditolak HAHAHAHA makanya nge gym</p>
-                    </div> --}}
+                    </div> --}} -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- End -->
+                            <!-- Modal Edit -->
+                            <div class="modal fade" id="modalEdit-{{$item->id_reservasi}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Reservasi Layanan</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid info">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5>Pemohon</h5>
+                                                        {{$item->name}}
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5>Waktu Permohonan</h5>
+                                                        {{$item->created_at}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5>Tipe Layanan</h5>
+                                                        {{$item->nama_layanan}}
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5>Tipe Handphone</h5>
+                                                        {{$item->merk_hp}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <h5>Keterangan</h5>
+                                                    <p>{{$item->keterangan}}</p>
+                                                </div>
+                                                <div class="row">
+                                                    <h5 class="mb-3">Status Permohonan</h5>
+                                                    <div class="col">
+                                                        {{-- <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" >
+                            <label class="btn" for="option5">Diterima</label>
+
+                            <input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
+                            <label class="btn" for="option6">Ditolak</label> --}}
+
+                                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                            <a href="{{ url("/reservasi/$item->id_reservasi/Diterima") }}">
+                                                                <button type="button" class="btn btn-outline-success btn-sm">Diterima</button>
+                                                            </a>
+                                                            <a href="{{ url("/reservasi/$item->id_reservasi/Ditolak") }}">
+                                                                <button type="button" class="btn btn-outline-danger btn-sm">Ditolak</button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- <div class="row">
+                        <h5>Keterangan Penolakan</h5>
+                        <p>Kasian ditolak HAHAHAHA makanya nge gym</p>
+                    </div> --}}
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                                            <button type="button" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End -->
+
+                            @endif
+
+
                         </div>
                     </div>
                 </div>
+                @endforeach
+                {{-- @dd($reservasi) --}}
+                @endif
             </div>
         </div>
     </div>
