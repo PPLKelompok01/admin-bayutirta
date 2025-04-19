@@ -27,7 +27,7 @@
                                     @if ($item->status == "Belum Dikonfirmasi")
                                     <h5>{{$item->status}}</h5>
                                 </div>
-                                <button id="konfirmasi" type="button" class="btn confirm" data-bs-toggle="modal">Beri Konfirmasi</button>
+                                <button data-item="{{$item}}" id="konfirmasi" type="button" class="btn confirm" data-bs-toggle="modal" data-bs-target="#modalkonfirmasi-{{$item->id_reservasi}}">Beri Konfirmasi</button>
                                 <!-- Modal Konfirmasi -->
                                 <div class="modal fade" id="modalkonfirmasi-{{$item->id_reservasi}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
