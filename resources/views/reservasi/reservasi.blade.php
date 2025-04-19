@@ -23,7 +23,7 @@
                                     <h5>{{$item->merk_hp}}</h5>
                                 </div>
                                 <div class="status">
-                                    <p>Status Layanan</p>
+                                    <p>Status Reservasi</p>
                                     @if ($item->status == "Belum Dikonfirmasi")
                                     <h5>{{$item->status}}</h5>
                                 </div>
@@ -210,10 +210,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {{-- <div class="row">
+                                                <!-- {{-- <div class="row">
                         <h5>Keterangan Penolakan</h5>
                         <p>Kasian ditolak HAHAHAHA makanya nge gym</p>
-                    </div> --}}
+                    </div> --}} -->
                                             </div>
                                         </div>
                                     </div>
