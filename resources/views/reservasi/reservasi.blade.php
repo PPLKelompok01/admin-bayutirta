@@ -109,6 +109,54 @@
                                     </svg>
                                 </a>
                             </div>
+                            <!-- Modal Detail -->
+                            <div class="modal fade" id="modalDetail-{{$item->id_reservasi}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Reservasi Layanan</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid info">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5>Pemohon</h5>
+                                                        {{$item->name}}
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5>Waktu Permohonan</h5>
+                                                        {{$item->created_at}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5>Tipe Layanan</h5>
+                                                        {{$item->nama_layanan}}
+                                                    </div>
+                                                    <div class="col">
+                                                        <h5>Tipe Handphone</h5>
+                                                        {{$item->merk_hp}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <h5>Keterangan</h5>
+                                                    <p>{{$item->keterangan}}</p>
+                                                </div>
+                                                <div class="row">
+                                                    <h5>Status Permohonan</h5>
+                                                    <p>{{$item->status}}</p>
+                                                </div>
+                                                {{-- <div class="row">
+                        <h5>Keterangan Penolakan</h5>
+                        <p>Kasian ditolak HAHAHAHA makanya nge gym</p>
+                    </div> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End -->
                         </div>
                     </div>
                 </div>
