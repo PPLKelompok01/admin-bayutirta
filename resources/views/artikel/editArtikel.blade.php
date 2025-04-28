@@ -12,7 +12,8 @@
                 <label for="formFile" class="form-label">
                     Upload Thumbnail Artikel (Jika ingin diubah)<span class="req">*</span>
                 </label>
-                <input class="form1 form-control" type="file" name="foto" id="formFile">
+                <input class="form1 form-control" type="file" name="foto" id="formFile" accept="image/png, image/jpeg, image/jpg">
+                <small class="text-muted">Format file yang diterima: PNG, JPG/JPEG</small>
             </div>
 
             <div className="row align-items-center">
@@ -79,7 +80,8 @@
                     <label for="formFile" class="form-label">
                         Upload Thumbnail Artikel<span class="req">*</span>
                     </label>
-                    <input class="form1 form-control" type="file" name="foto" id="formFile" >
+                    <input class="form1 form-control" type="file" name="foto" id="formFile" accept="image/png, image/jpeg, image/jpg" required>
+                    <small class="text-muted">Format file yang diterima: PNG, JPG/JPEG</small>
                 </div>
 
                 <div className="row align-items-center">
