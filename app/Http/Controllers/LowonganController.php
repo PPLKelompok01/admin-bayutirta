@@ -28,7 +28,7 @@ class LowonganController extends Controller
     public function lowongandetail(string $id)
     {
         $detail = Lowongan::where('id_lowongan', '=', $id)->first();
-        return view('lowongan.editLowongan', [
+        return view('lowongan.formLowongan', [
             'detail' => $detail,
         ]);
     }
