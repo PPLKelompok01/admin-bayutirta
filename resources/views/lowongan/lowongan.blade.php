@@ -18,8 +18,12 @@
             @endif
             <div class="card-body">
                 <h4>{{$item->judul}}</h4>
-                <p class="card-teks">{{$item->isi}}</p>
-
+                <h6>{{$item->posisi}}</h6>
+                <p class="card-teks">{{$item->deskripsi}}</p>
+                <div class="btn-group mt-3">
+                    <a href="{{ url("/lowongan/delete/$item->id_lowongan") }}"><button type="button" class="btn btn-sm btn-outline-danger mr-2">Delete</button></a>
+                    <a href="{{ url("/lowongan/$item->id_lowongan") }}"><button type="button" class="btn btn-3 btn-sm btn-outline-secondary">Edit</button></a>
+                </div>
             </div>
         </div>
         @endforeach
