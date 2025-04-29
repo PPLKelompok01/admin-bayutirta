@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset ('app.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/dashboard/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/lowongan/lowongan.css') }}">
-    <link rel="stylesheet" href="{{ asset ('css/lowongan/editLowongan.css') }}">
+    <link rel="stylesheet" href="{{ asset ('css/lowongan/formLowongan.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/penjualan/penjualan.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/penjualan/editPenjualan.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/artikel/artikel.css') }}">
@@ -76,7 +76,7 @@
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
+    </script>
     <!-- Icon -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -98,7 +98,7 @@
     <script src="{{ asset ('lte//dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
     <script>
-        $(function () {
+        $(function() {
             // Summernote
             $('#summernote').summernote()
 

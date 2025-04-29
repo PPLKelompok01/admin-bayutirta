@@ -13,7 +13,12 @@ class Artikel extends Model
         'title_penulis',
         'isi',
         'foto',
+        'suka',
         'created_at',
         'updated_at'
+    ];
+
+    protected $attributes = [
+        'suka' => 0,
     ];
 }
