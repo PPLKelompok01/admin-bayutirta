@@ -1,9 +1,9 @@
-.editLowongan {
-  margin-left: 320px;
-  padding-top: 24px;
-  /* background-color: aqua; */
+.formLowongan {
+    margin-left: 320px;
+    padding-top: 24px;
+    /* background-color: aqua; */
 }
-.req{
+.req {
     color: red;
 }
 .title {
@@ -21,7 +21,7 @@
     margin-bottom: 40px;
 
     border-radius: 8px;
-    background: #FFF;
+    background: #fff;
 }
 
 .info {
@@ -30,4 +30,3 @@
     gap: 32px;
     align-self: stretch;
 }
-
