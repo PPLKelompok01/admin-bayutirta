@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Dashboard</title>
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="{{ asset ('app.css') }}">
@@ -30,7 +31,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Plus+Jakarta+Display%3A700" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans%3A500%2C700" />
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset ('lte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
@@ -44,7 +46,8 @@
     <link rel="stylesheet" href="{{ asset ('lte/plugins/simplemde/simplemde.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -52,9 +55,9 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <style>
-        .base {
-            background-color: #F4F7FE;
-        }
+    .base {
+        background-color: #F4F7FE;
+    }
     </style>
 </head>
 </head>
@@ -98,16 +101,17 @@
     <script src="{{ asset ('lte//dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
     <script>
-        $(function() {
-            // Summernote
-            $('#summernote').summernote()
 
-            // CodeMirror
-            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-                mode: "htmlmixed",
-                theme: "monokai"
-            });
-        })
+    $(function() {
+        // Summernote
+        $('#summernote').summernote()
+
+        // CodeMirror
+        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+            mode: "htmlmixed",
+            theme: "monokai"
+        });
+    })
     </script>
 </body>
 
