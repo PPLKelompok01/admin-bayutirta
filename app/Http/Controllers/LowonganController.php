@@ -12,21 +12,23 @@ use App\Models\Lowongan;
 
 class LowonganController extends Controller
 {
-    public function lowongan() {
+    public function lowongan()
+    {
         $lowongans = Lowongan::all();
         return view('lowongan.lowongan', [
             'lowongan' => $lowongans
         ]);
     }
 
-    public function editLowongan() {
-        return view('lowongan.editLowongan');
+    public function formLowongan()
+    {
+        return view('lowongan.formLowongan');
     }
 
     public function lowongandetail(string $id)
     {
         $detail = Lowongan::where('id_lowongan', '=', $id)->first();
-        return view('lowongan.editLowongan', [
+        return view('lowongan.formLowongan', [
             'detail' => $detail,
         ]);
     }
@@ -46,11 +48,11 @@ class LowonganController extends Controller
             'deskripsi' => 'required'
         ]);
 
-        if(isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])){
-            $file= $request->file('foto');
-            $filename= date('YmdHi').$file->getClientOriginalName()[0];
-            $file->move('images/lowongan' , $filename);
-            $request['foto']= $filename;
+        if (isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])) {
+            $file = $request->file('foto');
+            $filename = date('YmdHi') . $file->getClientOriginalName()[0];
+            $file->move('images/lowongan', $filename);
+            $request['foto'] = $filename;
             $post = new Lowongan([
                 'judul' => $validatedData['judul'],
                 'cabang_perusahaan' => $validatedData['cabang_perusahaan'],
@@ -59,13 +61,13 @@ class LowonganController extends Controller
                 'foto' => $filename,
                 'created_at' => now()
             ]);
-        }else{
+        } else {
             $post = new Lowongan([
                 'judul' => $validatedData['judul'],
                 'cabang_perusahaan' => $validatedData['cabang_perusahaan'],
                 'posisi' => $validatedData['posisi'],
                 'deskripsi' => $validatedData['deskripsi'],
-                'foto' =>'kodak ultramax.jpg',
+                'foto' => 'kodak ultramax.jpg',
                 'created_at' => now()
             ]);
         }
@@ -84,11 +86,11 @@ class LowonganController extends Controller
             'deskripsi' => 'required'
         ]);
 
-        if(isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])){
-            $file= $request->file('foto');
-            $filename= date('YmdHi').$file->getClientOriginalName()[0];
-            $file->move('images/lowongan' , $filename);
-            $request['foto']= $filename;
+        if (isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])) {
+            $file = $request->file('foto');
+            $filename = date('YmdHi') . $file->getClientOriginalName()[0];
+            $file->move('images/lowongan', $filename);
+            $request['foto'] = $filename;
             Lowongan::where('id_lowongan', '=', $id)->update([
                 'foto' => $filename
             ]);

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset ('app.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/dashboard/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/lowongan/lowongan.css') }}">
-    <link rel="stylesheet" href="{{ asset ('css/lowongan/editLowongan.css') }}">
+    <link rel="stylesheet" href="{{ asset ('css/lowongan/formLowongan.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/penjualan/penjualan.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/penjualan/editPenjualan.css') }}">
     <link rel="stylesheet" href="{{ asset ('css/artikel/artikel.css') }}">
@@ -101,6 +101,7 @@
     <script src="{{ asset ('lte//dist/js/demo.js') }}"></script>
     <!-- Page specific script -->
     <script>
+
     $(function() {
         // Summernote
         $('#summernote').summernote()
