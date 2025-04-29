@@ -54,4 +54,10 @@
             @endif
         </div>
 </div>
+
+<script>
+    function confirmDelete() {
+        return confirm('Apakah Anda yakin ingin menghapus artikel ini?');
+    }
+</script>
 @endsection
