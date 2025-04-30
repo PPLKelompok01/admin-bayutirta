@@ -9,6 +9,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\UlasanController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\KonsultasiController;
 
 
 /*
@@ -30,18 +31,18 @@ Route::get('/', [LoginController::class, 'login'])->middleware('guest')->name('l
 Route::post('/', [LoginController::class, 'getLogin']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [dashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
-Route::get('/reservasi', [ReservasiController::class,'reservasi'])->middleware('auth');
-Route::get('/reservasi/{id}/{status}', [ReservasiController::class,'updateReservasi'])->middleware('auth');
+Route::get('/reservasi', [ReservasiController::class, 'reservasi'])->middleware('auth');
+Route::get('/reservasi/{id}/{status}', [ReservasiController::class, 'updateReservasi'])->middleware('auth');
 
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan'])->middleware('auth')->name('lowongan');
-Route::get('/lowongan/add', [LowonganController::class, 'editlowongan'])->middleware('auth');
+Route::get('/lowongan/add', [LowonganController::class, 'formLowongan'])->middleware('auth');
 Route::get('/lowongan/{id}', [LowonganController::class, 'lowongandetail'])->middleware('auth');
 Route::post('/lowongan/addLowongan', [LowonganController::class, 'addLowongan'])->middleware('auth')->name('addLowongan');
 Route::post('/lowongan/editLowongan/{id}', [LowonganController::class, 'edit'])->middleware('auth');
 Route::get('/lowongan/delete/{id}', [LowonganController::class, 'deletelowongan'])->middleware('auth')->name('deletelowongan');
 
-Route::get('/layanan', [LayananController::class,'layanan']);
+Route::get('/layanan', [LayananController::class, 'layanan']);
 Route::get('/layanan/info', [LayananController::class, 'infoLayanan']);
 Route::get('/layanan/deskripsi', [LayananController::class, 'descLayanan']);
 Route::get('/layanan/additional', [LayananController::class, 'additional']);
@@ -67,3 +68,7 @@ Route::get('/penjualan/{id}', [PenjualanController::class, 'penjualanDetail'])->
 Route::post('/penjualan/addpenjualan', [PenjualanController::class, 'addPenjualan'])->middleware('auth')->name('addPenjualan');
 Route::post('/penjualan/editpenjualan/{id}', [PenjualanController::class, 'edit'])->middleware('auth');
 Route::get('/penjualan/delete/{id}', [PenjualanController::class, 'deletePenjualan'])->middleware('auth')->name('deletePenjualan');
+
+Route::get('/konsultasi', [KonsultasiController::class, 'konsultasi'])->middleware('auth');
+Route::get('/konsultasi/detail/{id}', [KonsultasiController::class, 'getDetail'])->middleware('auth');
+Route::post('/konsultasi/reply/{id}', [KonsultasiController::class, 'sendReply'])->middleware('auth');
