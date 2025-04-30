@@ -66,6 +66,14 @@
                 <h3 class="fw-bold">Belum ada penjualan yang dibuat</h3>
                 <p>Buat dan atur penjualan yang bisa diakses pelangganmu!</p>
                 <p>Klik button “Tambah penjualan” di atas kanan halaman ini</p>
+            </div>    
+            <div class="picture">
+                <img src="/img/ALT 4.png" alt="noservice">
+            </div>
+            <div class="message text-center">
+                <h3 class="fw-bold">Belum ada penjualan yang dibuat</h3>
+                <p>Buat dan atur penjualan yang bisa diakses pelangganmu!</p>
+                <p>Klik button “Tambah penjualan” di atas kanan halaman ini</p>
             </div>           
         @endif
     </div>
