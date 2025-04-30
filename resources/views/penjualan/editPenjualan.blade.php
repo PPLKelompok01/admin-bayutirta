@@ -1,5 +1,6 @@
 @extends('main')
 @section('content')
+
 <div class="editpenjualan">
     <div class="title">Untitled penjualan</div>
         <div class="info-container">
@@ -26,6 +27,7 @@
                     value="{{$detail->judul}}"
                     required>
             </div>
+
             <div className="row align-items-center">
                 <label for="formFile" class="form-label">
                     Harga<span class="req">*</span>
@@ -38,6 +40,7 @@
                     value="{{$detail->harga}}"
                     required>
             </div>
+
             <div className="row align-items-center">
                 <label for="formFile" class="form-label">
                     Kategori<span class="req">*</span>
@@ -50,6 +53,7 @@
                     value="{{$detail->Kategori}}"
                     required>
             </div>
+            
             <div className="row align-items-center">
                 <label for="formFile" class="form-label">
                     Stok<span class="req">*</span>
