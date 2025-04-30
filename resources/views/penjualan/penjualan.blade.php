@@ -57,7 +57,11 @@
     <!--        </ul>-->
     <!--    </nav>     -->
     <!--</div>-->
+<<<<<<< HEAD
     @else
+=======
+        @else
+>>>>>>> 8de345793da2f9d9d2e2eb964d6b1d2ede88dfa1
     <div class="katalog">
             <div class="picture">
                 <img src="/img/ALT 4.png" alt="noservice">
@@ -66,6 +70,17 @@
                 <h3 class="fw-bold">Belum ada penjualan yang dibuat</h3>
                 <p>Buat dan atur penjualan yang bisa diakses pelangganmu!</p>
                 <p>Klik button “Tambah penjualan” di atas kanan halaman ini</p>
+<<<<<<< HEAD
+=======
+            </div>    
+            <div class="picture">
+                <img src="/img/ALT 4.png" alt="noservice">
+            </div>
+            <div class="message text-center">
+                <h3 class="fw-bold">Belum ada penjualan yang dibuat</h3>
+                <p>Buat dan atur penjualan yang bisa diakses pelangganmu!</p>
+                <p>Klik button “Tambah penjualan” di atas kanan halaman ini</p>
+>>>>>>> 8de345793da2f9d9d2e2eb964d6b1d2ede88dfa1
             </div>           
         @endif
     </div>
