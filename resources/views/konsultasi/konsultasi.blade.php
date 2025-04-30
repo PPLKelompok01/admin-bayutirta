@@ -200,198 +200,197 @@
 </div>
 
 <style>
-.dropdown-item.active {
-    background-color: #e9ecef;
-    color: #000;
-}
+    .dropdown-item.active {
+        background-color: #e9ecef;
+        color: #000;
+    }
 
-.card {
-    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
-    border: 0;
-    margin-bottom: 1rem;
-}
+    .card {
+        box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+        border: 0;
+        margin-bottom: 1rem;
+    }
 
-.table> :not(caption)>*>* {
-    padding: 1rem;
-}
+    .table> :not(caption)>*>* {
+        padding: 1rem;
+    }
 
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-}
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+    }
 
-.modal-header .btn-close {
-    filter: brightness(0) invert(1);
-    opacity: 1;
-}
+    .modal-header .btn-close {
+        filter: brightness(0) invert(1);
+        opacity: 1;
+    }
 
-.consultation-details label {
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
-}
+    .consultation-details label {
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+    }
 
-.consultation-details p {
-    font-size: 1rem;
-    color: #333;
-}
+    .consultation-details p {
+        font-size: 1rem;
+        color: #333;
+    }
 
-.badge {
-    font-weight: 500;
-    padding: 0.5em 0.75em;
-}
+    .badge {
+        font-weight: 500;
+        padding: 0.5em 0.75em;
+    }
 
-.content-header {
-    padding: 25px 0 0 0;
-}
+    .content-header {
+        padding: 25px 0 0 0;
+    }
 
-.content {
-    padding: 25px 0;
-}
+    .content {
+        padding: 25px 0;
+    }
 
-.content-wrapper {
-    padding: 25px 0;
-}
+    .content-wrapper {
+        padding: 25px 0;
+    }
 
-.container-fluid {
-    max-width: 100%;
-}
+    .container-fluid {
+        max-width: 100%;
+    }
 
-.card-header {
-    padding: 1.5rem 3rem;
-}
+    .card-header {
+        padding: 1.5rem 3rem;
+    }
 
-.card-body {
-    padding: 1.5rem 3rem;
-}
+    .card-body {
+        padding: 1.5rem 3rem;
+    }
 
-.table-responsive {
-    margin: 0 -3rem;
-    padding: 0 3rem;
-    width: calc(100% + 6rem);
-}
+    .table-responsive {
+        margin: 0 -3rem;
+        padding: 0 3rem;
+        width: calc(100% + 6rem);
+    }
 
-.table thead th {
-    font-weight: 600;
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
-}
+    .table thead th {
+        font-weight: 600;
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize semua modals
-    const viewModal = new bootstrap.Modal(document.getElementById('viewConsultationModal'));
-    const replyModal = new bootstrap.Modal(document.getElementById('replyConsultationModal'));
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize semua modals
+        const viewModal = new bootstrap.Modal(document.getElementById('viewConsultationModal'));
+        const replyModal = new bootstrap.Modal(document.getElementById('replyConsultationModal'));
 
-    // Handle close buttons for view modal
-    document.querySelectorAll('#viewConsultationModal .btn-close, #viewConsultationModal .btn-secondary')
-        .forEach(button => {
-            button.addEventListener('click', () => {
-                viewModal.hide();
+        // Handle close buttons for view modal
+        document.querySelectorAll('#viewConsultationModal .btn-close, #viewConsultationModal .btn-secondary')
+            .forEach(button => {
+                button.addEventListener('click', () => {
+                    viewModal.hide();
+                });
             });
-        });
 
-    // Handle close buttons for reply modal
-    document.querySelectorAll('#replyConsultationModal .btn-close, #replyConsultationModal .btn-secondary')
-        .forEach(button => {
-            button.addEventListener('click', () => {
-                replyModal.hide();
-            });
-        });
-
-    window.viewConsultation = function(id) {
-        fetch(`/konsultasi/detail/${id}`, {
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.querySelector('.consultation-customer').textContent = data.pelanggan;
-                document.querySelector('.consultation-category').textContent = data.kategori;
-                document.querySelector('.consultation-subject').textContent = data.subjek;
-                document.querySelector('.consultation-message').textContent = data.pesan;
-
-                const previousReplyDiv = document.querySelector('.previous-reply');
-                if (data.status === 'Sudah Dibalas' && data.balasan) {
-                    previousReplyDiv.classList.remove('d-none');
-                    document.querySelector('.consultation-reply').textContent = data.balasan;
-                } else {
-                    previousReplyDiv.classList.add('d-none');
-                }
-
-                viewModal.show();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan saat memuat data konsultasi');
-            });
-    };
-
-    window.replyConsultation = function(id) {
-        fetch(`/konsultasi/detail/${id}`, {
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.querySelector('.consultation-message-preview').textContent = data.pesan;
-                document.getElementById('consultationId').value = id;
-                document.getElementById('replyMessage').value = '';
-
-                replyModal.show();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan saat memuat data konsultasi');
-            });
-    };
-
-    document.getElementById('replyForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const id = document.getElementById('consultationId').value;
-        const message = document.getElementById('replyMessage').value;
-
-        if (!message.trim()) {
-            alert('Pesan balasan tidak boleh kosong');
-            return;
-        }
-
-        fetch(`/konsultasi/reply/${id}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    message
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+        // Handle close buttons for reply modal
+        document.querySelectorAll('#replyConsultationModal .btn-close, #replyConsultationModal .btn-secondary')
+            .forEach(button => {
+                button.addEventListener('click', () => {
                     replyModal.hide();
-                    window.location.reload();
-                } else {
-                    alert('Gagal mengirim balasan');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Terjadi kesalahan saat mengirim balasan');
+                });
             });
-    });
 
-    // Handle clicking outside modal to close
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                bootstrap.Modal.getInstance(this).hide();
+        window.viewConsultation = function(id) {
+            fetch(`/konsultasi/detail/${id}`, {
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.consultation-customer').textContent = data.pelanggan;
+                    document.querySelector('.consultation-category').textContent = data.kategori;
+                    document.querySelector('.consultation-subject').textContent = data.subjek;
+                    document.querySelector('.consultation-message').textContent = data.pesan;
+
+                    const previousReplyDiv = document.querySelector('.previous-reply');
+                    if (data.status === 'Sudah Dibalas' && data.balasan) {
+                        previousReplyDiv.classList.remove('d-none');
+                        document.querySelector('.consultation-reply').textContent = data.balasan;
+                    } else {
+                        previousReplyDiv.classList.add('d-none');
+                    }
+
+                    viewModal.show();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat memuat data konsultasi');
+                });
+        };
+
+        window.replyConsultation = function(id) {
+            fetch(`/konsultasi/detail/${id}`, {
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.consultation-message-preview').textContent = data.pesan;
+                    document.getElementById('consultationId').value = id;
+                    document.getElementById('replyMessage').value = '';
+
+                    replyModal.show();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat memuat data konsultasi');
+                });
+        };
+
+        document.getElementById('replyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = document.getElementById('consultationId').value;
+            const message = document.getElementById('replyMessage').value;
+
+            if (!message.trim()) {
+                alert('Pesan balasan tidak boleh kosong');
+                return;
             }
+
+            fetch(`/konsultasi/reply/${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        replyModal.hide();
+                        window.location.reload();
+                    } else {
+                        alert('Gagal mengirim balasan');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat mengirim balasan');
+                });
+        });
+
+        // Handle clicking outside modal to close
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    bootstrap.Modal.getInstance(this).hide();
+                }
+            });
         });
     });
-});
 </script>
 @endsection
-
