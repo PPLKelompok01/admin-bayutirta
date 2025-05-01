@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-light-warning elevation-4">
+<aside class="main-sidebar sidebar-light-warning elevation-4" style="height: 100vh; overflow-y: auto;>
     <div class="side">
         <div class="logo d-flex w-100 align-items-center gap-3">
             <img class="logo-1" src="/img/Vector.png" alt="Logo" />
@@ -42,10 +42,15 @@
                 <ion-icon name="ticket"></ion-icon>
                 Ulasan
             </a>
+            <a href="/konsultasi" class="menu-col d-flex w-100 align-items-center gap-3 p-3
+                {{ Request::is('konsultasi') ? 'active' : '' }}">
+                <ion-icon name="chatbubbles"></ion-icon>
+                Konsultasi
+            </a>
         </div>
-    
-        
-    
+
+
+
         <div class="acc d-flex position-relative w-100">
             <div class="role d-flex flex-column w-100 align-items-center position-absolute bottom-0 start-0">
                 <div class="position-absolute top-0 start-50 translate-middle">
@@ -53,7 +58,7 @@
                 </div>
                 <h6> {{ auth()->user()->name }} </h6>
                 <p> {{ auth()->user()->role }} </p>
-    
+
             </div>
         </div>
     </div>
