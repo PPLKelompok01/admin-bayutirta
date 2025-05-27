@@ -98,10 +98,9 @@
     <script src="{{ asset ('lte//plugins/codemirror/mode/xml/xml.js') }}"></script>
     <script src="{{ asset ('lte//plugins/codemirror/mode/htmlmixed/htmlmixed.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset ('lte//dist/js/demo.js') }}"></script>
+    <!-- <script src="{{ asset ('lte//dist/js/demo.js') }}"></script> -->
     <!-- Page specific script -->
     <script>
-
     $(function() {
         // Summernote
         $('#summernote').summernote()
