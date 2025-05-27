@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-warning elevation-4" style="height: 100vh; overflow-y: auto;>
     <div class="side">
-        <div class="logo d-flex w-100 align-items-center gap-3">
+    <div class="logo d-flex w-100 align-items-center gap-3">
             <img class="logo-1" src="/img/Vector.png" alt="Logo" />
             Bayu Tirta Handphone
         </div>

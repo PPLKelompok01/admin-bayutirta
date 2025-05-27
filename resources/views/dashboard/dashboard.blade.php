@@ -33,7 +33,7 @@
                       </svg>
                     </div>
                     <div class="desc">
-                      <h5>Tugas Baru</h5>
+                      <h5>Perlu Konfirmasi</h5>
                       <p>{{$belum_dikonfirmasi}}</p>
                     </div>
                   </div>
@@ -58,7 +58,7 @@
 
                     </div>
                     <div class="desc">
-                      <h5>Total Pesanan</h5>
+                      <h5>Total Task</h5>
                       <p>{{$total}}</p>
                     </div>
                   </div>
@@ -82,8 +82,35 @@
 
                     </div>
                     <div class="desc">
-                      <h5>Total Task Selesai</h5>
+                      <h5>Total Task Diterima</h5>
                       <p>{{$diterima}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3">
+                  <div class="item">
+                    <div class="icon"><svg width="57" height="56" viewBox="0 0 57 56" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="28.4004" cy="28" r="28" fill="#F7EAE9" />
+                        <g>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 24 24" fill="red" class="size-2">
+                            <circle cx="12" cy="12" r="12" fill="#FEE2E2"/>
+                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
+                          </svg>
+                          
+                        </g>
+                        
+                        <defs>
+                          <clipPath id="clip0_23_1543">
+                            <rect width="26" height="26" fill="white" transform="translate(15.4004 15)" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+
+                    </div>
+                    <div class="desc">
+                      <h5>Total Task Ditolak</h5>
+                      <p>{{$ditolak}}</p>
                     </div>
                   </div>
                 </div>
@@ -219,15 +246,17 @@
               </div>
               {{-- Mulai for loop --}}
               {{-- @dd($reservasi) --}}
-              @if (isset($reservasi) AND $total>0)
-              @foreach ($reservasi as $item)
+              @if (isset($butuh_dikonfirmasi) AND $total>0)
+              @foreach ($butuh_dikonfirmasi as $item)
               <div class="service">
-                <div class="row">
-                  <div class="col-xl-12">
-                    <div class="time">
-                      <p>{{$item->created_at}}</p>
-                      <h5>{{$item->nama_layanan}}</h5>
-                    </div>
+                <div class="desc">
+                  <div class="id">
+                    <p>ID</p>
+                    <h5>{{$item->id_reservasi}}</h5>
+                  </div>
+                  <div class="time">
+                    <p>{{$item->created_at}}</p>
+                    <h5>{{$item->nama_layanan}}</h5>
                   </div>
                 </div>
 
