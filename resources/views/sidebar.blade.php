@@ -7,6 +7,9 @@
             <img class="logo-1" src="/img/Vector.png" alt="Logo" />
             Bayu Tirta
             
+=======
+            Bayu Tirta Handphone
+>>>>>>> 5af058287309c2237b56f0d21b8a16591bb0211b
         </div>
     </a>
         <div class="divider w-100"></div>
