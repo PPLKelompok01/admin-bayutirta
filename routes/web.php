@@ -70,6 +70,6 @@ Route::post('/penjualan/addpenjualan', [PenjualanController::class, 'addPenjuala
 Route::post('/penjualan/editpenjualan/{id}', [PenjualanController::class, 'edit'])->middleware('auth');
 Route::get('/penjualan/delete/{id}', [PenjualanController::class, 'deletePenjualan'])->middleware('auth')->name('deletePenjualan');
 
-Route::get('/konsultasi', [KonsultasiController::class, 'konsultasi'])->middleware('auth');
+Route::get('/konsultasi', [KonsultasiController::class, 'konsultasi'])->middleware('auth')->name('konsultasi.index');
 Route::get('/konsultasi/detail/{id}', [KonsultasiController::class, 'getDetail'])->middleware('auth');
 Route::post('/konsultasi/reply/{id}', [KonsultasiController::class, 'sendReply'])->middleware('auth');
