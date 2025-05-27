@@ -3,7 +3,7 @@
     <div class="side">
         <div class="logo d-flex w-100 align-items-center gap-3">
             <img class="logo-1" src="/img/Vector.png" alt="Logo" />
-            Bayu Tirta
+            Bayu Tirta Handphone
         </div>
         <div class="divider w-100"></div>
         <div class="menu w-100 gap-2">
