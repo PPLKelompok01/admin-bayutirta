@@ -1,17 +1,10 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-warning elevation-4" style="height: 100vh; overflow-y: auto;>
     <div class="side">
-    <a href="/dashboard" style="text-decoration: none" class="brand-link d-flex flex-column align-items-center gap-3">
-        <div class="logo d-flex w-100 align-items-center gap-3">
-            
+    <div class="logo d-flex w-100 align-items-center gap-3">
             <img class="logo-1" src="/img/Vector.png" alt="Logo" />
-            Bayu Tirta
-            
-=======
             Bayu Tirta Handphone
->>>>>>> 5af058287309c2237b56f0d21b8a16591bb0211b
         </div>
-    </a>
         <div class="divider w-100"></div>
         <div class="menu w-100 gap-2">
             <a href="/dashboard" class=" menu-col d-flex w-100 align-items-center gap-3 p-3
