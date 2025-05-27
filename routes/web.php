@@ -47,7 +47,8 @@ Route::post('/artikel/addArtikel', [artikelController::class, 'addArtikel'])->mi
 Route::post('/artikel/editArtikel/{id}', [artikelController::class, 'edit'])->middleware('auth');
 Route::get('/artikel/delete/{id}', [artikelController::class, 'deleteArtikel'])->middleware('auth')->name('deleteArtikel');
 
-Route::get('/ulasan', [UlasanController::class, 'ulasan'])->middleware('auth');
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::post('/ulasan/select', [UlasanController::class, 'select'])->name('ulasan.select');
 
 Route::get('/penjualan', [PenjualanController::class, 'penjualan'])->middleware('auth')->name('penjualan');
 Route::get('/penjualan/add', [PenjualanController::class, 'editPenjualan'])->middleware('auth');
@@ -56,9 +57,8 @@ Route::post('/penjualan/addpenjualan', [PenjualanController::class, 'addPenjuala
 Route::post('/penjualan/editpenjualan/{id}', [PenjualanController::class, 'edit'])->middleware('auth');
 Route::get('/penjualan/delete/{id}', [PenjualanController::class, 'deletePenjualan'])->middleware('auth')->name('deletePenjualan');
 
-// ✅ Tambahkan route DELETE untuk tombol hapus katalog
 Route::delete('/penjualan/hapus/{id}', [PenjualanController::class, 'destroy'])->middleware('auth')->name('penjualan.destroy');
 
-Route::get('/konsultasi', [KonsultasiController::class, 'konsultasi'])->middleware('auth');
+Route::get('/konsultasi', [KonsultasiController::class, 'konsultasi'])->middleware('auth')->name('konsultasi.index');
 Route::get('/konsultasi/detail/{id}', [KonsultasiController::class, 'getDetail'])->middleware('auth');
 Route::post('/konsultasi/reply/{id}', [KonsultasiController::class, 'sendReply'])->middleware('auth');
