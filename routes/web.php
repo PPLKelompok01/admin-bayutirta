@@ -11,18 +11,6 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\KonsultasiController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('loginPage');
 });
@@ -33,7 +21,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [dashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 Route::get('/reservasi', [ReservasiController::class, 'reservasi'])->middleware('auth');
 Route::get('/reservasi/{id}/{status}', [ReservasiController::class, 'updateReservasi'])->middleware('auth');
-
 
 Route::get('/lowongan', [LowonganController::class, 'lowongan'])->middleware('auth')->name('lowongan');
 Route::get('/lowongan/add', [LowonganController::class, 'formLowongan'])->middleware('auth');
@@ -68,6 +55,9 @@ Route::get('/penjualan/{id}', [PenjualanController::class, 'penjualanDetail'])->
 Route::post('/penjualan/addpenjualan', [PenjualanController::class, 'addPenjualan'])->middleware('auth')->name('addPenjualan');
 Route::post('/penjualan/editpenjualan/{id}', [PenjualanController::class, 'edit'])->middleware('auth');
 Route::get('/penjualan/delete/{id}', [PenjualanController::class, 'deletePenjualan'])->middleware('auth')->name('deletePenjualan');
+
+// ✅ Tambahkan route DELETE untuk tombol hapus katalog
+Route::delete('/penjualan/hapus/{id}', [PenjualanController::class, 'destroy'])->middleware('auth')->name('penjualan.destroy');
 
 Route::get('/konsultasi', [KonsultasiController::class, 'konsultasi'])->middleware('auth');
 Route::get('/konsultasi/detail/{id}', [KonsultasiController::class, 'getDetail'])->middleware('auth');
