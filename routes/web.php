@@ -60,7 +60,8 @@ Route::post('/artikel/addArtikel', [artikelController::class, 'addArtikel'])->mi
 Route::post('/artikel/editArtikel/{id}', [artikelController::class, 'edit'])->middleware('auth');
 Route::get('/artikel/delete/{id}', [artikelController::class, 'deleteArtikel'])->middleware('auth')->name('deleteArtikel');
 
-Route::get('/ulasan', [UlasanController::class, 'ulasan'])->middleware('auth');
+Route::get('/ulasan', [UlasanController::class, 'index'])->name('ulasan.index');
+Route::post('/ulasan/select', [UlasanController::class, 'select'])->name('ulasan.select');
 
 Route::get('/penjualan', [PenjualanController::class, 'penjualan'])->middleware('auth')->name('penjualan');
 Route::get('/penjualan/add', [PenjualanController::class, 'editPenjualan'])->middleware('auth');

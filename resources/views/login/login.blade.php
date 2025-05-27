@@ -59,8 +59,6 @@
                                         <div class="pt-1 mb-4">
                                             <button class="btn btn-dark btn-lg btn-block" type="submit">Masuk</button>
                                         </div>
-                                        <a href="#" class="small text-muted">Terms of use</a>
-                                        <a href="#" class="small text-muted">Privacy policy</a>
                                     </form>
                                 </div>
                             </div>
