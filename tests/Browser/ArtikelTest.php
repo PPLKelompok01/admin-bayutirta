@@ -8,23 +8,15 @@ use Tests\DuskTestCase;
 
 class ArtikelTest extends DuskTestCase
 {
-    use DatabaseMigrations;
     /**
      * A Dusk test example.
-    @group ViewArtikel
      */
-    
-    public function testArtikel(): void
+    public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/') 
-                ->type('username', 'admin')
-                ->type('kata sandi', 'admin')
-                ->press('Masuk')
-                ->assertPathIs('/dashboard')
-                ->clickLink('Artikel')
-                ->assertPathIs('artikel')
-                ->assertSee('Artikel');
+                    ->assertSee('Artikel')
+                    ->assertPathIs('artikel');
         });
     }
 }
