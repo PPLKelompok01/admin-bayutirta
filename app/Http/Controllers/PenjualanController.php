@@ -7,10 +7,19 @@ use App\Models\Penjualan;
 
 class PenjualanController extends Controller
 {
-    public function penjualan() {
-        $penjualan = Penjualan::all();
+    // ✅ Tambahkan parameter Request disini (ini satu-satunya tambahan di function ini)
+    public function penjualan(Request $request) {
+        $filterKategori = $request->query('kategori');  // Ambil filter kategori dari query string
+
+        if ($filterKategori) {
+            $penjualan = Penjualan::where('Kategori', $filterKategori)->get();
+        } else {
+            $penjualan = Penjualan::all();
+        }
+
         return view('penjualan.penjualan', [
-            'penjualan' => $penjualan
+            'penjualan' => $penjualan,
+            'selectedKategori' => $filterKategori
         ]);
     }
 
@@ -38,7 +47,7 @@ class PenjualanController extends Controller
             'judul' => 'required|max:255',
             'harga' => 'required',
             'kategori' => 'required',
-            'stok' => 'required',
+            'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required'
         ]);
 
@@ -77,7 +86,7 @@ class PenjualanController extends Controller
             'judul' => 'required|max:255',
             'harga' => 'required',
             'kategori' => 'required',
-            'stok' => 'required',
+            'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required'
         ]);
 
@@ -102,7 +111,6 @@ class PenjualanController extends Controller
         return redirect('penjualan');
     }
 
-    // ✅ Method DELETE yang baru
     public function destroy(string $id)
     {
         Penjualan::where('id_penjualan', '=', $id)->delete();

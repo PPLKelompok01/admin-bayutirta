@@ -191,8 +191,8 @@
                 const stokInput = form.querySelector('input[name="stok"]');
                 const stokValue = parseInt(stokInput.value);
 
-                if (!isNaN(stokValue) && stokValue === 0) {
-                    alert("Isi stok yang tersedia! Jika stok hanya 0 maka hapus katalog saja.");
+                if (!isNaN(stokValue) && stokValue <= 0) {
+                    alert("Stok harus lebih dari 0! Jika tidak tersedia, hapus katalog saja.");
                     e.preventDefault(); // cegah submit form
                 }
             });
