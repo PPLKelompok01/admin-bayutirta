@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Penjualan;
 
 class PenjualanController extends Controller
 {
-    public function penjualan() {
-        $penjualan = Penjualan::all();
+    // ✅ Tambahkan parameter Request disini (ini satu-satunya tambahan di function ini)
+    public function penjualan(Request $request) {
+        $filterKategori = $request->query('kategori');  // Ambil filter kategori dari query string
+
+        if ($filterKategori) {
+            $penjualan = Penjualan::where('Kategori', $filterKategori)->get();
+        } else {
+            $penjualan = Penjualan::all();
+        }
+
         return view('penjualan.penjualan', [
-            'penjualan' => $penjualan
+            'penjualan' => $penjualan,
+            'selectedKategori' => $filterKategori
         ]);
     }
 
@@ -39,13 +47,13 @@ class PenjualanController extends Controller
             'judul' => 'required|max:255',
             'harga' => 'required',
             'kategori' => 'required',
-            'stok' => 'required',
+            'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required'
         ]);
 
         if(isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])){
-            $file= $request->file('foto');
-            $filename= date('YmdHi').$file->getClientOriginalName()[0];
+            $file = $request->file('foto');
+            $filename = date('YmdHi') . $file->getClientOriginalName()[0];
             $file->move(public_path('images/penjualan'), $filename);
             $post = new Penjualan([
                 'judul' => $validatedData['judul'],
@@ -56,14 +64,14 @@ class PenjualanController extends Controller
                 'foto' => $filename,
                 'created_at' => now()
             ]);
-        }else{
+        } else {
             $post = new Penjualan([
                 'judul' => $validatedData['judul'],
                 'harga' => $validatedData['harga'],
                 'Kategori' => $validatedData['kategori'],
                 'stok' => $validatedData['stok'],
                 'deskripsi' => $validatedData['deskripsi'],
-                'foto' =>'kodak ultramax.jpg',
+                'foto' => 'kodak ultramax.jpg',
                 'created_at' => now()
             ]);
         }
@@ -74,18 +82,17 @@ class PenjualanController extends Controller
 
     public function edit(Request $request, string $id)
     {
-        //dd($id);
         $validatedData = $request->validate([
             'judul' => 'required|max:255',
             'harga' => 'required',
             'kategori' => 'required',
-            'stok' => 'required',
+            'stok' => 'required|numeric|min:1',
             'deskripsi' => 'required'
         ]);
 
         if(isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])){
-            $file= $request->file('foto');
-            $filename= date('YmdHi').$file->getClientOriginalName()[0];
+            $file = $request->file('foto');
+            $filename = date('YmdHi') . $file->getClientOriginalName()[0];
             $file->move(public_path('images/penjualan'), $filename);
             Penjualan::where('id_penjualan', '=', $id)->update([
                 'foto' => $filename
@@ -104,9 +111,9 @@ class PenjualanController extends Controller
         return redirect('penjualan');
     }
 
-    public function deletePenjualan(string $id)
+    public function destroy(string $id)
     {
         Penjualan::where('id_penjualan', '=', $id)->delete();
-        return redirect('penjualan');
+        return redirect('penjualan')->with('success', 'Katalog berhasil dihapus.');
     }
 }
