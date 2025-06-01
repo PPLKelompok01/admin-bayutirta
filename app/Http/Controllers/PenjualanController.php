@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Models\Penjualan;
 
 class PenjualanController extends Controller
 {
-    // ✅ Tambahkan parameter Request disini (ini satu-satunya tambahan di function ini)
-    public function penjualan(Request $request) {
-        $filterKategori = $request->query('kategori');  // Ambil filter kategori dari query string
-
+    public function penjualan(Request $request)
+    {
+        $filterKategori = $request->query('kategori');
         if ($filterKategori) {
             $penjualan = Penjualan::where('Kategori', $filterKategori)->get();
         } else {
@@ -23,7 +23,8 @@ class PenjualanController extends Controller
         ]);
     }
 
-    public function editPenjualan() {
+    public function editPenjualan()
+    {
         return view('penjualan.editPenjualan');
     }
 
@@ -51,10 +52,18 @@ class PenjualanController extends Controller
             'deskripsi' => 'required'
         ]);
 
-        if(isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])){
+        if (isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])) {
             $file = $request->file('foto');
             $filename = date('YmdHi') . $file->getClientOriginalName()[0];
             $file->move(public_path('images/penjualan'), $filename);
+
+            // ✅ Auto copy ke customer
+            $targetDir = 'C:/Users/User/Documents/customer-bayutirta/public/images/katalog/';
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
+            File::copy(public_path('images/penjualan/' . $filename), $targetDir . $filename);
+
             $post = new Penjualan([
                 'judul' => $validatedData['judul'],
                 'harga' => $validatedData['harga'],
@@ -90,10 +99,18 @@ class PenjualanController extends Controller
             'deskripsi' => 'required'
         ]);
 
-        if(isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])){
+        if (isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])) {
             $file = $request->file('foto');
             $filename = date('YmdHi') . $file->getClientOriginalName()[0];
             $file->move(public_path('images/penjualan'), $filename);
+
+            // ✅ Auto copy ke customer ketika edit foto
+            $targetDir = 'C:/Users/User/Documents/customer-bayutirta/public/images/katalog/';
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
+            File::copy(public_path('images/penjualan/' . $filename), $targetDir . $filename);
+
             Penjualan::where('id_penjualan', '=', $id)->update([
                 'foto' => $filename
             ]);
