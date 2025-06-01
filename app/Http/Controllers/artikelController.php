@@ -53,6 +53,10 @@ class artikelController extends Controller
             //$file->storeAs('artikel', $filename, 'public');
             //$file->move('Image/artikel' , $filename);
             $file-> move(public_path('images/artikel'), $filename);
+            copy(
+                public_path('images/artikel/'.$filename), 
+                'D:/SEMESTER 8/PPL/TUBES/customer_tirta/public/images/artikel/'.$filename
+            );
             // $request['foto']= $filename;
             $post = new Artikel([
             'judul' => $validatedData['judul'],
