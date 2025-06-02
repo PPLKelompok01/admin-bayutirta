@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\File; // ✅ ini sudah benar
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 use App\Models\Lowongan;
 
 class LowonganController extends Controller
@@ -50,9 +49,16 @@ class LowonganController extends Controller
 
         if (isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])) {
             $file = $request->file('foto');
-            $filename = date('YmdHi') . $file->getClientOriginalName()[0];
-            $file->move('images/lowongan', $filename);
-            $request['foto'] = $filename;
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images/lowongan'), $filename);
+
+            // ✅ Auto copy ke customer
+            $targetDir = 'C:/Users/User/Documents/customer-bayutirta/public/images/lowongan/';
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
+            File::copy(public_path('images/lowongan/' . $filename), $targetDir . $filename);
+
             $post = new Lowongan([
                 'judul' => $validatedData['judul'],
                 'cabang_perusahaan' => $validatedData['cabang_perusahaan'],
@@ -78,7 +84,6 @@ class LowonganController extends Controller
 
     public function edit(Request $request, string $id)
     {
-        //dd($id);
         $validatedData = $request->validate([
             'judul' => 'required|max:255',
             'cabang_perusahaan' => 'required',
@@ -88,9 +93,17 @@ class LowonganController extends Controller
 
         if (isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])) {
             $file = $request->file('foto');
-            $filename = date('YmdHi') . $file->getClientOriginalName()[0];
-            $file->move('images/lowongan', $filename);
-            $request['foto'] = $filename;
+
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images/lowongan'), $filename);
+
+            // ✅ Auto copy ke customer ketika edit foto
+            $targetDir = 'C:/Users/User/Documents/customer-bayutirta/public/images/lowongan/';
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
+            File::copy(public_path('images/lowongan/' . $filename), $targetDir . $filename);
+
             Lowongan::where('id_lowongan', '=', $id)->update([
                 'foto' => $filename
             ]);
@@ -100,7 +113,7 @@ class LowonganController extends Controller
             'judul' => $validatedData['judul'],
             'cabang_perusahaan' => $validatedData['cabang_perusahaan'],
             'posisi' => $validatedData['posisi'],
-            'deskripsi' => $validatedData['deskripsi']
+            'deskripsi' => $validatedData['deskripsi'],
         ]);
 
         return redirect('lowongan');
