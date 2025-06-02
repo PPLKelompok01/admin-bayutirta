@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; // ✅ ini sudah benar
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 use App\Models\Lowongan;
 
 class LowonganController extends Controller
@@ -94,6 +93,7 @@ class LowonganController extends Controller
 
         if (isset($_FILES["foto"]) && !empty($_FILES["foto"]["name"])) {
             $file = $request->file('foto');
+
             $filename = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('images/lowongan'), $filename);
 

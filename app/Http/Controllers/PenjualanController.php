@@ -58,7 +58,7 @@ class PenjualanController extends Controller
             $file->move(public_path('images/penjualan'), $filename);
 
             // ✅ Auto copy ke customer
-            $targetDir = 'C:/Users/User/Documents/customer-bayutirta/public/images/katalog/';
+            $targetDir = 'D:/Dari D/SEMESTER 8/PPL (SOFTWARE)/TUBES/customer-bayutirta/public/images/katalog/';
             if (!file_exists($targetDir)) {
                 mkdir($targetDir, 0777, true);
             }
@@ -105,7 +105,7 @@ class PenjualanController extends Controller
             $file->move(public_path('images/penjualan'), $filename);
 
             // ✅ Auto copy ke customer ketika edit foto
-            $targetDir = 'C:/Users/User/Documents/customer-bayutirta/public/images/katalog/';
+            $targetDir = 'D:/Dari D/SEMESTER 8/PPL (SOFTWARE)/TUBES/customer-bayutirta/public/images/katalog/';
             if (!file_exists($targetDir)) {
                 mkdir($targetDir, 0777, true);
             }
